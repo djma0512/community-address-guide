@@ -4,8 +4,8 @@
     "createdAt": "2026-07-24T13:56:52.376Z",
     "imageWidth": 503,
     "imageHeight": 571,
-    "schemaVersion": "2.0",
-    "appVersion": "V17",
+    "schemaVersion": 18,
+    "appVersion": "V18",
     "updatedAt": "2026-07-24T17:27:48.403222+00:00",
     "sourceImage": "社區區塊配置圖（A1～H3）",
     "addressCount": 52,
@@ -4256,6 +4256,205 @@
     "viewButtonText": "查看門牌位置",
     "defaultTransport": "汽車",
     "showTextNavigation": true,
-    "mapAlt": "全民一家社區 A1 至 H3 區塊配置圖"
+    "mapAlt": "全民一家社區 A1 至 H3 區塊配置圖",
+    "textNavigationTitle": "文字導航"
+  },
+  "textNavigation": {
+    "A1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "A2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "A3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "B1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "B2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "B3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "B4": {
+      "car": [],
+      "motorcycle": []
+    },
+    "B5": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C10": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C11": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C12": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C4": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C5": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C6": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C7": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C8": {
+      "car": [],
+      "motorcycle": []
+    },
+    "C9": {
+      "car": [],
+      "motorcycle": []
+    },
+    "D1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "D2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "D3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "D4": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E10": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E11": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E4": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E5": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E6": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E7": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E8": {
+      "car": [],
+      "motorcycle": []
+    },
+    "E9": {
+      "car": [],
+      "motorcycle": []
+    },
+    "F1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "F2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "F3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G3": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G4": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G5": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G6": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G7": {
+      "car": [],
+      "motorcycle": []
+    },
+    "G8": {
+      "car": [],
+      "motorcycle": []
+    },
+    "H1": {
+      "car": [],
+      "motorcycle": []
+    },
+    "H2": {
+      "car": [],
+      "motorcycle": []
+    },
+    "H3": {
+      "car": [],
+      "motorcycle": []
+    }
   }
 }

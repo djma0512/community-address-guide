@@ -72,7 +72,8 @@
     $('questionText').textContent = settings.questionText || '您要前往幾號？';
     $('transportText').textContent = settings.transportText || '請選擇交通方式';
     $('communityMapImage').alt = settings.mapAlt || `${settings.communityName || ''}社區配置圖`;
-    $('versionBadge').textContent = mapData.metadata?.appVersion || 'V17';
+    $('versionBadge').textContent = mapData.metadata?.appVersion || 'V18';
+    $('routeTitle').textContent = settings.textNavigationTitle || '文字導航';
     stepsCard.hidden = settings.showTextNavigation === false;
     setSelectedMode(settings.defaultTransport === '機車' ? '機車' : '汽車');
   }
@@ -176,7 +177,7 @@
     return route.map(([x, y]) => `${Number(x).toFixed(0)},${Number(y).toFixed(0)}`).join(' ');
   }
 
-  function routeText(blockCode, addressList) {
+  function defaultRouteText(blockCode, addressList) {
     const modeExplanation = selectedMode === '機車'
       ? '目前使用機車路線，已包含機車可通行小路並避開禁止通行區域。'
       : '目前使用汽車路線，只會沿灰褐色可行車道路並避開禁止通行區域。';
@@ -184,6 +185,34 @@
       ? `橘色區塊包含 ${addressList.join('、')} 號，抵達後請確認實際門戶。`
       : `抵達橘色標示的 ${blockCode} 區塊，即為 ${addressList[0]} 號所在位置。`;
     return ['從黃色入口位置出發，沿地圖上的藍色路線前進。', modeExplanation, sharedText];
+  }
+
+  function replaceNavigationTokens(text, blockCode, addressList) {
+    const current = currentAddress || String(addressList[0] || '');
+    const addresses = addressList.map(number => `${number}號`).join('、');
+    return String(text || '')
+      .replaceAll('{block}', blockCode)
+      .replaceAll('{addresses}', addresses)
+      .replaceAll('{address}', current ? `${current}號` : '')
+      .replaceAll('{mode}', selectedMode);
+  }
+
+  function routeText(blockCode, addressList) {
+    const routeMode = selectedMode === '機車' ? 'motorcycle' : 'car';
+    const customSteps = mapData.textNavigation?.[blockCode]?.[routeMode];
+    if (Array.isArray(customSteps)) {
+      const resolved = customSteps
+        .map(step => replaceNavigationTokens(step, blockCode, addressList).trim())
+        .filter(Boolean);
+      if (resolved.length) return resolved;
+    }
+    return defaultRouteText(blockCode, addressList);
+  }
+
+  function escapeHtml(value) {
+    return String(value).replace(/[&<>'"]/g, char => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;'
+    }[char]));
   }
 
   function renderDestination(address, blockCode) {
@@ -221,7 +250,7 @@
     updateAddressPill();
     const steps = routeText(blockCode, addressList);
     stepsList.innerHTML = steps.map((text, index) => `
-      <div class="step"><div class="step-number">${index + 1}</div><p>${text}</p></div>
+      <div class="step"><div class="step-number">${index + 1}</div><p>${escapeHtml(text)}</p></div>
     `).join('');
   }
 

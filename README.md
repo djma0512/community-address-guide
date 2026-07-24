@@ -1,31 +1,37 @@
-# 社區門牌導引 PWA V17（可維護版）
+# 社區門牌導引 PWA V18（文字導航可編輯版）
 
 ## 這一版的重點
 
 - `index.html`：正式導航首頁
 - `admin.html`：資料管理頁
-- `data/community-data.json`：所有可維護資料集中在這一個檔案
-- `css/`：畫面樣式
-- `js/`：程式功能
-- `assets/community-map.png`：社區地圖
-- `sw.js`：PWA 離線快取
+- `data/community-data.json`：門牌、路線、禁止通行點與文字導航都集中在這個檔案
+- 可針對每一個區塊，分別編輯汽車與機車的文字導航
+- 每一行代表一個導航步驟
+- 未填寫自訂文字時，正式頁會使用系統預設內容
 
-## 第一次更新到 GitHub
+## 文字導航管理
 
-將本資料夾內的所有內容上傳到 Repository 根目錄，覆蓋 V16 同名檔案。
-GitHub Pages 設定不需要更改，網址與 QR Code 也不會改變。
+開啟：
 
-## 以後修改資料（最簡單）
+`https://你的帳號.github.io/community-address-guide/admin.html`
 
-1. 開啟：`https://djma0512.github.io/community-address-guide/admin.html`
-2. 修改基本文字、門牌、禁止通行點或路線。
-3. 點「下載新版 community-data.json」。
-4. GitHub 進入 `community-address-guide/data/`。
-5. 點 Add file → Upload files，上傳新版 `community-data.json` 並 Commit。
-6. 約 1～3 分鐘後重新開啟網站。
+進入「文字導航」：
 
-因 V17 對 JSON 採用「有網路先讀最新版」策略，單純修改資料通常不必更改 `sw.js`。
+1. 選擇區塊
+2. 選擇汽車或機車
+3. 每行輸入一個導航步驟
+4. 到「匯入／匯出」下載新版 `community-data.json`
+5. 到 GitHub 的 `data` 資料夾覆蓋同名檔案
 
-## 注意
+可使用的變數：
 
-`admin.html` 無法直接寫入 GitHub，這是 GitHub Pages 靜態網站的限制；它會幫你產生正確 JSON，最後只需覆蓋一個檔案。
+- `{block}`：區塊名稱
+- `{addresses}`：該區塊所有門牌
+- `{address}`：使用者目前選取的門牌
+- `{mode}`：汽車或機車
+
+## GitHub 更新
+
+第一次由 V17 升級 V18 時，請上傳並覆蓋整包內容。之後若只修改資料，通常只需覆蓋：
+
+`data/community-data.json`

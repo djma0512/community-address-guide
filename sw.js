@@ -1,4 +1,4 @@
-const CACHE_NAME = 'community-guide-v17-1';
+const CACHE_NAME = 'community-guide-v18-1';
 const APP_FILES = [
   './','./index.html','./admin.html','./manifest.webmanifest',
   './css/style.css','./css/admin.css','./js/app.js','./js/admin.js',

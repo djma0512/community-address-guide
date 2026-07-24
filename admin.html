@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>社區導航資料管理 V17</title>
+  <title>社區導航資料管理 V18</title>
   <link rel="stylesheet" href="./css/admin.css">
   <script src="./js/admin.js" defer></script>
 </head>
 <body>
 <main class="admin-shell">
   <header class="admin-header">
-    <div><h1>社區導航資料管理 V17</h1><p class="sub">在這裡修改資料，完成後下載新的 <strong>community-data.json</strong>，再到 GitHub 覆蓋同名檔案。</p></div>
+    <div><h1>社區導航資料管理 V18</h1><p class="sub">在這裡修改資料，完成後下載新的 <strong>community-data.json</strong>，再到 GitHub 覆蓋同名檔案。</p></div>
     <a class="btn" href="./index.html">查看正式導航</a>
   </header>
 
@@ -23,6 +23,7 @@
   <nav class="tabs" aria-label="管理功能">
     <button class="tab active" data-tab="settings">基本設定</button>
     <button class="tab" data-tab="addresses">門牌對照</button>
+    <button class="tab" data-tab="navigation">文字導航</button>
     <button class="tab" data-tab="blocked">禁止通行點</button>
     <button class="tab" data-tab="routes">路線編輯</button>
     <button class="tab" data-tab="export">匯入／匯出</button>
@@ -36,6 +37,7 @@
       <div class="field"><label for="locationInput">目前位置文字</label><input id="locationInput"></div>
       <div class="field"><label for="questionInput">門牌問題文字</label><input id="questionInput"></div>
       <div class="field"><label for="transportInput">交通方式標題</label><input id="transportInput"></div>
+      <div class="field"><label for="textNavigationTitleInput">文字導航標題</label><input id="textNavigationTitleInput" placeholder="文字導航"></div>
       <div class="field"><label for="defaultTransportInput">預設交通方式</label><select id="defaultTransportInput"><option>汽車</option><option>機車</option></select></div>
       <div class="field"><label for="showTextInput">文字導航</label><select id="showTextInput"><option value="true">顯示</option><option value="false">隱藏</option></select></div>
     </div>
@@ -45,6 +47,33 @@
     <h2>門牌對照</h2><p class="sub">門牌必須是數字；區塊請從 A1～H3 中選擇。相同區塊可以有兩個門牌。</p>
     <div class="actions"><button id="addAddressBtn" class="btn primary">新增門牌</button><span id="addressCount" class="badge"></span></div>
     <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>門牌</th><th>區塊</th><th>操作</th></tr></thead><tbody id="addressTableBody"></tbody></table></div>
+  </section>
+
+  <section id="panel-navigation" class="card panel">
+    <h2>文字導航</h2>
+    <p class="sub">每一行代表一個導航步驟。可分別設定每個區塊的汽車與機車說明；留白時會使用系統預設文字。</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="field"><label for="navigationBlock">目的區塊</label><select id="navigationBlock"></select></div>
+      <div class="field"><label for="navigationMode">交通方式</label><select id="navigationMode"><option value="car">汽車</option><option value="motorcycle">機車</option></select></div>
+    </div>
+    <div class="navigation-summary">
+      <span id="navigationAddressBadge" class="badge"></span>
+      <span id="navigationCustomStatus" class="badge neutral"></span>
+    </div>
+    <div class="field" style="margin-top:12px">
+      <label for="navigationStepsInput">導航步驟（每行一個步驟）</label>
+      <textarea id="navigationStepsInput" rows="8" placeholder="例如：&#10;從社區入口直行。&#10;經過中庭後左轉。&#10;目的區塊位於右側。"></textarea>
+      <small class="hint">可使用：<code>{block}</code> 區塊、<code>{addresses}</code> 該區塊所有門牌、<code>{address}</code> 目前選取門牌、<code>{mode}</code> 交通方式。</small>
+    </div>
+    <div class="actions">
+      <button id="useDefaultNavigationBtn" class="btn primary">套用系統預設文字</button>
+      <button id="copyOtherNavigationBtn" class="btn">複製另一交通方式</button>
+      <button id="clearNavigationBtn" class="btn danger">清除自訂文字</button>
+    </div>
+    <div class="navigation-preview-wrap">
+      <h3>預覽</h3>
+      <div id="navigationPreview" class="navigation-preview"></div>
+    </div>
   </section>
 
   <section id="panel-blocked" class="card panel">
