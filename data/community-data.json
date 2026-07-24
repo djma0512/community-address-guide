@@ -6,7 +6,7 @@
     "imageHeight": 571,
     "schemaVersion": 18,
     "appVersion": "V18",
-    "updatedAt": "2026-07-24T17:27:48.403222+00:00",
+    "updatedAt": "2026-07-24T18:09:55.091Z",
     "sourceImage": "社區區塊配置圖（A1～H3）",
     "addressCount": 52,
     "blockCount": 49,
@@ -4309,7 +4309,10 @@
       "motorcycle": []
     },
     "C2": {
-      "car": [],
+      "car": [
+        "直走到ok後右轉",
+        "過涼亭後左邊第一棟"
+      ],
       "motorcycle": []
     },
     "C3": {
