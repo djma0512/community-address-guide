@@ -2,27 +2,24 @@
   "id": "./",
   "name": "社區門牌導引",
   "short_name": "門牌導引",
-  "description": "社區門牌汽車與機車路線導引",
+  "description": "社區汽車與機車門牌路線導航",
   "lang": "zh-TW",
-  "dir": "ltr",
-  "start_url": "./index.html",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "portrait",
   "background_color": "#F4F7FB",
   "theme_color": "#2563EB",
   "icons": [
     {
       "src": "./icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
       "src": "./icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>社區導航資料管理 V17</title>
+  <link rel="stylesheet" href="./css/admin.css">
+  <script src="./js/admin.js" defer></script>
+</head>
+<body>
+<main class="admin-shell">
+  <header class="admin-header">
+    <div><h1>社區導航資料管理 V17</h1><p class="sub">在這裡修改資料，完成後下載新的 <strong>community-data.json</strong>，再到 GitHub 覆蓋同名檔案。</p></div>
+    <a class="btn" href="./index.html">查看正式導航</a>
+  </header>
+
+  <section class="card notice">
+    <strong>最簡單的更新流程</strong>
+    <p class="sub">① 在本頁修改 → ② 點「下載新版 JSON」→ ③ GitHub 進入 data 資料夾，上傳並覆蓋 community-data.json。網址與 QR Code 都不用改。</p>
+    <div id="dataStatus" class="status">正在載入資料……</div>
+  </section>
+
+  <nav class="tabs" aria-label="管理功能">
+    <button class="tab active" data-tab="settings">基本設定</button>
+    <button class="tab" data-tab="addresses">門牌對照</button>
+    <button class="tab" data-tab="blocked">禁止通行點</button>
+    <button class="tab" data-tab="routes">路線編輯</button>
+    <button class="tab" data-tab="export">匯入／匯出</button>
+  </nav>
+
+  <section id="panel-settings" class="card panel active">
+    <h2>基本設定</h2><p class="sub">修改標題、位置文字與預設交通方式。</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="field"><label for="appTitleInput">首頁標題</label><input id="appTitleInput"></div>
+      <div class="field"><label for="communityNameInput">社區名稱</label><input id="communityNameInput"></div>
+      <div class="field"><label for="locationInput">目前位置文字</label><input id="locationInput"></div>
+      <div class="field"><label for="questionInput">門牌問題文字</label><input id="questionInput"></div>
+      <div class="field"><label for="transportInput">交通方式標題</label><input id="transportInput"></div>
+      <div class="field"><label for="defaultTransportInput">預設交通方式</label><select id="defaultTransportInput"><option>汽車</option><option>機車</option></select></div>
+      <div class="field"><label for="showTextInput">文字導航</label><select id="showTextInput"><option value="true">顯示</option><option value="false">隱藏</option></select></div>
+    </div>
+  </section>
+
+  <section id="panel-addresses" class="card panel">
+    <h2>門牌對照</h2><p class="sub">門牌必須是數字；區塊請從 A1～H3 中選擇。相同區塊可以有兩個門牌。</p>
+    <div class="actions"><button id="addAddressBtn" class="btn primary">新增門牌</button><span id="addressCount" class="badge"></span></div>
+    <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>門牌</th><th>區塊</th><th>操作</th></tr></thead><tbody id="addressTableBody"></tbody></table></div>
+  </section>
+
+  <section id="panel-blocked" class="card panel">
+    <h2>禁止通行點</h2><p class="sub">直接點地圖新增紅色禁止區。點紅圈可選取，再調整半徑或刪除。</p>
+    <div class="editor-layout" style="margin-top:14px">
+      <div class="map-editor"><img src="./assets/community-map.png" alt="社區地圖"><svg id="blockedSvg" viewBox="0 0 503 571"></svg></div>
+      <aside class="sidebox"><h3>選取的禁止點</h3><div class="field"><label for="blockedRadius">安全半徑</label><input id="blockedRadius" type="number" min="5" max="50" value="17"></div><div class="actions"><button id="deleteBlockedBtn" class="btn danger" disabled>刪除選取點</button></div><div id="blockedList" class="point-list" style="margin-top:12px"></div></aside>
+    </div>
+  </section>
+
+  <section id="panel-routes" class="card panel">
+    <h2>路線編輯</h2><p class="sub">選擇交通方式與區塊後，可以檢視現有路線。按「重新繪製」後，依序點擊道路中心，最後按「儲存路線」。</p>
+    <div class="grid" style="margin-top:14px">
+      <div class="field"><label for="routeMode">交通方式</label><select id="routeMode"><option value="car">汽車</option><option value="motorcycle">機車</option></select></div>
+      <div class="field"><label for="routeBlock">目的區塊</label><select id="routeBlock"></select></div>
+    </div>
+    <div class="actions"><button id="redrawRouteBtn" class="btn primary">重新繪製</button><button id="undoRouteBtn" class="btn" disabled>上一步</button><button id="saveRouteBtn" class="btn success" disabled>儲存路線</button><button id="cancelRouteBtn" class="btn" disabled>取消編輯</button></div>
+    <p id="routeStatus" class="route-help"></p>
+    <div class="editor-layout"><div class="map-editor"><img src="./assets/community-map.png" alt="社區地圖"><svg id="routeSvg" viewBox="0 0 503 571"></svg></div><aside class="sidebox"><h3>路線點</h3><div id="routePointList" class="point-list"></div></aside></div>
+  </section>
+
+  <section id="panel-export" class="card panel">
+    <h2>匯入／匯出</h2>
+    <p class="sub">修改完成後下載 JSON。若要繼續編輯以前下載的資料，可在此匯入。</p>
+    <div class="actions"><button id="downloadJsonBtn" class="btn success">下載新版 community-data.json</button></div>
+    <div style="margin-top:16px"><label class="field"><strong>匯入既有 JSON</strong><input id="importJsonInput" class="file-input" type="file" accept="application/json,.json"></label></div>
+    <h3 style="margin-top:20px">GitHub 覆蓋位置</h3>
+    <pre>community-address-guide
+└─ data
+   └─ community-data.json  ← 用下載的新檔覆蓋這個檔案</pre>
+  </section>
+</main>
+</body>
+</html>
