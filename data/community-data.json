@@ -6,7 +6,7 @@
     "imageHeight": 571,
     "schemaVersion": "2.0",
     "appVersion": "V17",
-    "updatedAt": "2026-07-24T17:46:44.567Z",
+    "updatedAt": "2026-07-24T17:27:48.403222+00:00",
     "sourceImage": "社區區塊配置圖（A1～H3）",
     "addressCount": 52,
     "blockCount": 49,
@@ -642,8 +642,12 @@
             543
           ],
           [
-            237,
-            498
+            238,
+            541
+          ],
+          [
+            232,
+            506
           ]
         ],
         "B1": [
@@ -3855,8 +3859,8 @@
           463
         ],
         "A3": [
-          237,
-          498
+          232,
+          506
         ],
         "B1": [
           240,
@@ -4244,7 +4248,7 @@
     }
   },
   "settings": {
-    "appTitle": "全民一家社區門牌導引",
+    "appTitle": "社區門牌導引",
     "communityName": "全民一家社區",
     "locationText": "您目前位於：社區入口",
     "questionText": "您要前往幾號？",
